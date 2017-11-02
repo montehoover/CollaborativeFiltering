@@ -50,6 +50,15 @@ def main():
                 rating = random.randint(1, 5)
                 print(movieId, userId, rating, sep=',', file=f)
 
+    with open('PracticeRatings.txt') as f:
+        with open('PracticeTestRatings.txt', 'w') as fnew:
+            counter = 0
+            for line in f:
+                print(line.strip(), file=fnew)
+                counter += 1
+                if counter >= 100:
+                    break
+
 def find_nearest(examples, case):
     scores = []
     for e in examples:
