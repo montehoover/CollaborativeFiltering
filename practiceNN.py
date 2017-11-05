@@ -14,22 +14,22 @@ import random
 
 
 def main():
-    people = []
-    people.append({'Finding Nemo': 1, 'Robin Hood': 1, 'Jungle Book': 1, 'Mulan': 0, 'Little Mermaid': 0, 'Cinderella': 0, 'Snow White': 0})
-    people.append({'Finding Nemo': 0, 'Robin Hood': 0, 'Jungle Book': 0, 'Mulan': 1, 'Little Mermaid': 1, 'Cinderella': 1, 'Snow White': 1})
-    people.append({'Finding Nemo': 1, 'Robin Hood': 1, 'Jungle Book': 1, 'Mulan': 1, 'Little Mermaid': 1, 'Cinderella': 1, 'Snow White': 1})
-    people.append({'Finding Nemo': 0, 'Robin Hood': 1, 'Jungle Book': 1, 'Mulan': 0, 'Little Mermaid': 0, 'Cinderella': 1, 'Snow White': 1})
-    people.append({'Finding Nemo': 1, 'Robin Hood': 0, 'Jungle Book': 0, 'Mulan': 1, 'Little Mermaid': 1, 'Cinderella': 1, 'Snow White': 1})
-    people.append({'Finding Nemo': 1, 'Robin Hood': 0, 'Jungle Book': 0, 'Mulan': 1, 'Little Mermaid': 1, 'Cinderella': 0, 'Snow White': 0})
-    people.append({'Finding Nemo': 0, 'Robin Hood': 1, 'Jungle Book': 1, 'Mulan': 1, 'Little Mermaid': 0, 'Cinderella': 0, 'Snow White': 0})
-
-    test = {'Robin Hood': 0, 'Jungle Book': 0, 'Mulan': 0, 'Little Mermaid': 0, 'Cinderella': 0, 'Snow White': 0}
-
-    NN = find_nearest(people, test)
-    # print(NN)
-    # print(predict(NN, 'Finding Nemo'))
-
-    l = []
+    # people = []
+    # people.append({'Finding Nemo': 1, 'Robin Hood': 1, 'Jungle Book': 1, 'Mulan': 0, 'Little Mermaid': 0, 'Cinderella': 0, 'Snow White': 0})
+    # people.append({'Finding Nemo': 0, 'Robin Hood': 0, 'Jungle Book': 0, 'Mulan': 1, 'Little Mermaid': 1, 'Cinderella': 1, 'Snow White': 1})
+    # people.append({'Finding Nemo': 1, 'Robin Hood': 1, 'Jungle Book': 1, 'Mulan': 1, 'Little Mermaid': 1, 'Cinderella': 1, 'Snow White': 1})
+    # people.append({'Finding Nemo': 0, 'Robin Hood': 1, 'Jungle Book': 1, 'Mulan': 0, 'Little Mermaid': 0, 'Cinderella': 1, 'Snow White': 1})
+    # people.append({'Finding Nemo': 1, 'Robin Hood': 0, 'Jungle Book': 0, 'Mulan': 1, 'Little Mermaid': 1, 'Cinderella': 1, 'Snow White': 1})
+    # people.append({'Finding Nemo': 1, 'Robin Hood': 0, 'Jungle Book': 0, 'Mulan': 1, 'Little Mermaid': 1, 'Cinderella': 0, 'Snow White': 0})
+    # people.append({'Finding Nemo': 0, 'Robin Hood': 1, 'Jungle Book': 1, 'Mulan': 1, 'Little Mermaid': 0, 'Cinderella': 0, 'Snow White': 0})
+    #
+    # test = {'Robin Hood': 0, 'Jungle Book': 0, 'Mulan': 0, 'Little Mermaid': 0, 'Cinderella': 0, 'Snow White': 0}
+    #
+    # NN = find_nearest(people, test)
+    # # print(NN)
+    # # print(predict(NN, 'Finding Nemo'))
+    #
+    # l = []
     # with open('netflix_data/TrainingRatings.txt') as f:
     #     for i in range(10):
     #         line = f.readline()
@@ -38,25 +38,26 @@ def main():
 
     # print(l)
 
-    with open('PracticeRatings.txt', 'w') as f:
-        for movieId in range(1, 21):
-            numRatings = random.randint(1, 3000)
-            users = set()
-            for i in range(numRatings):
-                userId = 1
-                while userId in users:
-                    userId = random.randint(1, 3000)
-                users.add(userId)
-                rating = random.randint(1, 5)
-                print(movieId, userId, rating, sep=',', file=f)
+    # with open('PracticeRatings.txt', 'w') as f:
+    #     for movieId in range(1, 21):
+    #         numRatings = random.randint(1, 3000)
+    #         users = set()
+    #         for i in range(numRatings):
+    #             userId = 1
+    #             while userId in users:
+    #                 userId = random.randint(1, 3000)
+    #             users.add(userId)
+    #             rating = random.randint(1, 5)
+    #             print(movieId, userId, rating, sep=',', file=f)
 
-    with open('PracticeRatings.txt') as f:
-        with open('PracticeTestRatings.txt', 'w') as fnew:
+    with open('netflix_data/TestingRatings.txt') as f:
+        with open('PracticeTestingRatings.txt', 'w') as fnew:
             counter = 0
             for line in f:
-                print(line.strip(), file=fnew)
+                if counter == counter:
+                    print(line.strip(), file=fnew)
                 counter += 1
-                if counter >= 100:
+                if counter >= 10:
                     break
 
 def find_nearest(examples, case):
